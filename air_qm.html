@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Monitor Project</title>
+    <!-- Importing Abril Fatface from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Air Quality Monitor Project</h1>
+        <p>Empowering communities with real-time air quality data.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#vision">Our Vision</a></li>
+            <li><a href="#problems">Air Pollution Problems</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#air-quality">Air Quality</a></li>
+        </ul>
+    </nav>
+
+    <section id="problems">
+        <h2>Air Pollution Problems</h2>
+        <div class="problem">
+            <h3>Health Impacts</h3>
+            <p>Air pollution causes respiratory diseases, cardiovascular issues, and poses significant risks, especially to children and the elderly.</p>
+        </div>
+        <div class="problem">
+            <h3>Environmental Damage</h3>
+            <p>Pollutants harm ecosystems and contribute to issues like acid rain and loss of biodiversity.</p>
+        </div>
+        <div class="problem">
+            <h3>Climate Change</h3>
+            <p>Increased emissions lead to climate change, causing extreme weather and affecting agriculture and livelihoods.</p>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <h2>Ways to Control Air Pollution</h2>
+        <div class="solution">
+            <h3>Stricter Emissions Regulations</h3>
+            <p>Enforcing regulations can significantly reduce harmful pollutants.</p>
+        </div>
+        <div class="solution">
+            <h3>Adoption of Renewable Energy</h3>
+            <p>Shifting to renewable energy sources decreases reliance on fossil fuels.</p>
+        </div>
+        <div class="solution">
+            <h3>Community Education and Awareness</h3>
+            <p>Educating communities fosters public involvement in pollution reduction efforts.</p>
+        </div>
+    </section>
+
+    <section id="air-quality">
+        <h2>Current Air Quality in Delhi</h2>
+        <div id="loading-indicator" class="loader" style="display: none;"></div>
+        <div id="error-message" style="display: none;" role="alert"></div>
+        <div id="air-quality-data" aria-live="polite" style="display: none;"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Air Quality Awareness Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

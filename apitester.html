@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Quality Data</title>
+</head>
+<body>
+  <h1>Air Quality Data</h1>
+  <div id="aqi-data">
+    <!-- The air quality data will be displayed here -->
+  </div>
+
+  <script>
+    const token = '44b96b261424567b03441ac2d6e4c739e499f6ee'; // Replace with your API token
+    const city = 'delhi'; // Replace with the city you want to get data for
+    const apiUrl = `https://api.waqi.info/feed/${city}/?token=${token}`;
+
+    // Function to fetch air quality data
+    async function fetchAQIData() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.status === "ok") {
+          const aqi = data.data.aqi; // Air Quality Index
+
+          // Pollutants - Check if they exist, or show a 'Not Available' message
+          const pm25 = data.data.iaqi.pm25 ? data.data.iaqi.pm25.v : 'Not Available';
+          const pm10 = data.data.iaqi.pm10 ? data.data.iaqi.pm10.v : 'Not Available';
+          const o3 = data.data.iaqi.o3 ? data.data.iaqi.o3.v : 'Not Available';
+          const no2 = data.data.iaqi.no2 ? data.data.iaqi.no2.v : 'Not Available';
+          const so2 = data.data.iaqi.so2 ? data.data.iaqi.so2.v : 'Not Available';
+          const co = data.data.iaqi.co ? data.data.iaqi.co.v : 'Not Available';
+
+          // Displaying the data
+          document.getElementById('aqi-data').innerHTML = `
+            <p>AQI (Air Quality Index): ${aqi}</p>
+            <p>PM2.5: ${pm25} µg/m³</p>
+            <p>PM10: ${pm10} µg/m³</p>
+            <p>Ozone (O3): ${o3} µg/m³</p>
+            <p>Nitrogen Dioxide (NO2): ${no2} µg/m³</p>
+            <p>Sulfur Dioxide (SO2): ${so2} µg/m³</p>
+            <p>Carbon Monoxide (CO): ${co} µg/m³</p>
+          `;
+        } else {
+          document.getElementById('aqi-data').innerHTML = '<p>Unable to fetch data. Try again later.</p>';
+        }
+      } catch (error) {
+        document.getElementById('aqi-data').innerHTML = '<p>Error fetching data.</p>';
+        console.error('Error:', error);
+      }
+    }
+
+    // Fetch the data when the page loads
+    fetchAQIData();
+  </script>
+</body>
+</html>
